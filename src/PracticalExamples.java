@@ -1,5 +1,6 @@
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.IntStream;
@@ -42,6 +43,21 @@ public class PracticalExamples {
     }
 
     public static void task1722 () {
+        List<List<Integer>> gradesArray = List.of(
+                List.of(87, 96, 70),
+                List.of(68, 87, 90),
+                List.of(94, 100, 90),
+                List.of(100, 81, 82));
+
+        gradesArray.stream().forEach(x -> {
+            System.out.println("The average of " + x + " is " + x.stream().mapToInt(y -> y).average().orElse(0));
+        });
+    }
+
+    public static void task1723(){
+
 
     }
 }
+
+

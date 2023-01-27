@@ -1,4 +1,2 @@
-public record Person (String name, int age) { }
-
-
-
+public record Person(String firstName, String lastName) {
+}

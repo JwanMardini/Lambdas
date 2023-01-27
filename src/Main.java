@@ -1,12 +1,12 @@
-import java.lang.reflect.Array;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -30,7 +30,7 @@ public class Main {
         //instead
         // internal iteration
         // sum the integers from 1 through 10
-        System.out.println("Sum of 1 through 10 is " + IntStream.rangeClosed(1, 10).sum());
+        System.out.println("Sum of 1 through 10 is " + IntStream.rangeClosed(   1, 10).sum());
         /* In this code, notice that there is neither a counter-control
             variable nor a variable to store the total—this is because
             IntStream conveniently defines rangeClosed and
@@ -77,7 +77,7 @@ public class Main {
         System.out.printf("Sum of the triples of the even ints from 2 through 10 is: %d%n", IntStream.rangeClosed(1, 10)
                 .filter(x -> x % 2 == 0).map(x -> x * 3).sum());
 
-        arrayOfObj();
+
 
        }
 
@@ -116,6 +116,8 @@ public class Main {
            System.out.println(IntStream.of(values).reduce(0, (x,y) -> x + y));
            //calculating the product of the list
            System.out.println(IntStream.of(values).reduce((x, y) -> x * y).getAsInt());
+
+        streamsOfRandomValues();
 
        }
 
@@ -224,6 +226,31 @@ public class Main {
 
 
        }
+
+       public static void creatAStreamFromAFile () throws IOException {
+           // Regex that matches one or more consecutive whitespace characters
+           Pattern pattern = Pattern.compile("\\s+");
+
+           // count occurrences of each word in a Stream<String> sorted by word
+           Map<String, Long> wordCounts = Files.lines(Paths.get("Chapter2Paragraph.txt")).flatMap(line -> pattern.splitAsStream(line))
+                   .collect(Collectors.groupingBy(String::toLowerCase, TreeMap::new, Collectors.counting()));
+           // display the words grouped by starting letter
+           wordCounts.entrySet().stream().collect(Collectors.groupingBy(entry -> entry.getKey().charAt(0), TreeMap::new, Collectors.toList()))
+                   .forEach((letter, wordList) -> {
+                       System.out.printf("%n%C%n", letter);
+                       wordList.stream().forEach(word -> System.out.printf("%13s:  %d%n", word.getKey(), word.getValue()));
+                   });
+       }
+
+
+       public static void streamsOfRandomValues (){
+        SecureRandom random = new SecureRandom();
+        // roll a die 60,000,000 times and summarize the results
+        System.out.printf("%-6s%s%n", "Face", "Frequency");
+        random.ints(60_000_000, 1, 7).boxed().collect(
+                Collectors.groupingBy(Function.identity(), Collectors.counting())).
+                forEach((face, frequency) -> System.out.printf("%-6d%d%n", face, frequency));
+   }
 
 
 

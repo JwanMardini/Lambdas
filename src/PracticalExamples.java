@@ -17,35 +17,37 @@ public class PracticalExamples {
         System.out.println(IntStream.rangeClosed(1, 10).
                 filter(x -> x % 2 == 0).map(x -> x * 3).sum());*/
 
-        task1723();
+        task1719();
     }
 
-    public static void task1720 () {
+    public static void task1720() {
         Scanner input = new Scanner(System.in);
         ArrayList<Integer> myList = new ArrayList<>();
         boolean i = true;
-        while (i){
+        while (i) {
             System.out.print("Enter the grades then enter 0 to map the grades: ");
             int grade = input.nextInt();
-            if (grade == 0){i = false;}
+            if (grade == 0) {
+                i = false;
+            }
             myList.add(grade);
         }
         myList.stream().map(x -> {
-            if (x == 5){
+            if (x == 5) {
                 return "A";
-        } else if (x == 4) {
+            } else if (x == 4) {
                 return "B";
             } else if (x == 3) {
                 return "C";
             } else if (x == 2) {
                 return "D";
-            }else{
+            } else {
                 return "F";
             }
         }).forEach(System.out::println);
     }
 
-    public static void task1722 () {
+    public static void task1722() {
         List<List<Integer>> gradesArray = List.of(
                 List.of(87, 96, 70),
                 List.of(68, 87, 90),
@@ -57,7 +59,7 @@ public class PracticalExamples {
         });
     }
 
-    public static void task1723(){
+    public static void task1723() {
         List<Person> personList = List.of(
                 new Person("Jwan", "iiii"),
                 new Person("Mazen", "Mardini"),
@@ -68,6 +70,31 @@ public class PracticalExamples {
         Comparator<Person> personComparator = Comparator.comparing(Person::lastName);
         System.out.println(personList.stream().filter(x -> x.lastName().equals("Mardini")).findFirst().get());
     }
+
+    public static void task1719() {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Integer> list = new ArrayList<>();
+        boolean i = true;
+        while (i) {
+            System.out.print("Enter an integer or 0 to find the average of integers: ");
+            int choice = input.nextInt();
+            if (choice == 0) {
+                i = false;
+            }else {
+                list.add(choice);
+            }
+        }
+
+        if (list.size() > 0) {
+            // sum the list
+           int grades =  list.stream().reduce(0, (x, y) -> x + y);
+            // display average of the list
+            System.out.println("The average of the class is: " + list.stream().mapToInt(x -> x).average().orElse(0));
+        }else {
+            System.out.println("No grades");
+        }
+    }
+
 }
 
 

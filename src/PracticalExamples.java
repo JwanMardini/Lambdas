@@ -1,5 +1,6 @@
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
@@ -15,6 +16,8 @@ public class PracticalExamples {
         //Task 18
         System.out.println(IntStream.rangeClosed(1, 10).
                 filter(x -> x % 2 == 0).map(x -> x * 3).sum());*/
+
+        task1723();
     }
 
     public static void task1720 () {
@@ -55,8 +58,15 @@ public class PracticalExamples {
     }
 
     public static void task1723(){
+        List<Person> personList = List.of(
+                new Person("Jwan", "iiii"),
+                new Person("Mazen", "Mardini"),
+                new Person("Salah", "ii"),
+                new Person("Lana", "Mardini")
+        );
 
-
+        Comparator<Person> personComparator = Comparator.comparing(Person::lastName);
+        System.out.println(personList.stream().filter(x -> x.lastName().equals("Mardini")).findFirst().get());
     }
 }
 

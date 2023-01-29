@@ -1,0 +1,21 @@
+Benefits of streams in Java include:
+
+They allow for more concise and readable code when processing collections of data.
+They provide a way to perform functional-style operations on collections, such as filter, map, and reduce.
+They support parallel processing, which can improve performance on multi-core systems.
+Drawbacks of streams in Java include:
+
+They can be less efficient than traditional for-loops for small collections or simple operations.
+They can be more difficult to debug, as operations are performed lazily and the data flow may not be immediately obvious.
+Not all operations can be performed using streams, and some operations may require the use of a combination of streams and traditional for-loops.
+It's also worth noting that streams are not a replacement for collections, they are just a tool to operate on them in a functional way.
+
+
+
+https://www.youtube.com/watch?v=LDU7qnLVV54
+
+What is stream ?
+https://www.geeksforgeeks.org/stream-in-java/
+
+a funny pic of streams in java
+https://en.proft.me/2016/11/13/tutorial-lambda-expression-and-stream-api-java-8/

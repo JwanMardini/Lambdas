@@ -1,0 +1,17 @@
+Fördelarna med functional programming är:
+
+Ökad läsbarhet och förståelighet: Funktionella program är lättare att förstå och debugga eftersom de är mer modulära och har mindre side-effects.
+
+Ökad testbarhet: Funktionella program är lättare att testa eftersom de inte har side-effects och är mer prediktabla.
+
+Ökad skalbarhet: Funktionella program är lättare att skala upp eftersom de är mer modulära och kan parallelliseras lättare.
+
+Mindre buggar: Funktionella program innebär ofta färre buggar eftersom de inte har side-effects och är mer prediktabla.
+
+Nackdelarna med functional programming är:
+
+Ökad svårighet: Funktionell programmering kan vara svårare att förstå och använda för utvecklare som är vana vid imperative programmering.
+
+Ökad komplexitet: Funktionell programmering kan leda till ökad komplexitet eftersom det kan innebära att man måste hantera fler abstraktioner och datastrukturer.
+
+Ökad minnesåtgång: Funktionell programmering kan leda till ökad minnesåtgång eftersom det ofta innebär att man måste hantera fler datastrukturer och abstraktioner.

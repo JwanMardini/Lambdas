@@ -1,3 +1,3 @@
 # Lambdas
-functional programming
+functional programming <br>
 Part of Methods for sustainable programming course
